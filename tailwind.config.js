@@ -8,11 +8,25 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
+        login: "url('../../public/bg-login.svg')",
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
     },
   },
-  plugins: [],
+  daisyui: {
+    themes: [
+        {
+            defaultTheme: {
+                'primary': '#E14D2A',
+                'secondary': '#FD841F',
+                'info': '#E5E7EB'
+            }
+        }
+    ]
+},
+  plugins: [
+    require('daisyui')
+  ],
 }
