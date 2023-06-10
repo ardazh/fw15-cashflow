@@ -154,7 +154,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className='bg-primary text-[#EFEFEF] px-[150px] py-[80px]'>
+      <footer className='bg-primary text-[#EFEFEF] px-[150px] py-[80px]'>
         <div className='flex flex-col gap-[30px] border-b-2 mb-[30px]'>
           <div className='font-bold text-4xl text-white'>CashFlow</div>
           <div className='text-lg mb-[50px]'>Simplify financial needs and saving<br/> much time in banking needs with<br/> one single app.</div>
@@ -166,7 +166,7 @@ export default function Home() {
             <div>contact@cashflow.com</div>
           </div>
         </div>
-      </section>
+      </footer>
     </main>
   )
 }
