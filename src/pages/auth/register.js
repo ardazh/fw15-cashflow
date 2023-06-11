@@ -49,14 +49,11 @@ function Register() {
                   <input className='input w-full outline-none border-0 hover:outline-none hover:border-0' placeholder='Enter your password' />
                 </div>
               </div>
-              <div className='text-primary text-right'>
-                Forgot password?
-              </div>
               <div className='mt-[90px]'>
-                <button type='submit' className='btn btn-secondary text-white btn-block'>Sign Up</button>
+                <button type='submit' className='btn btn-secondary text-white btn-block normal-case'>Sign Up</button>
               </div>
               <div className='flex justify-center mt-10'>
-                Already have an account? Let&apos;s Login <Link href='' className='text-secondary'>Let&apos;s Login</Link>
+                Already have an account? Let&apos;s Login <Link href='/auth/login' className='text-secondary'>Let&apos;s Login</Link>
               </div>
             </div>
         </form>

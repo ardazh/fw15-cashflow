@@ -3,6 +3,7 @@ import Headers from '@/components/Header'
 import Footers from '@/components/Footers'
 import Aside from '@/components/Aside'
 
+import Link from 'next/link'
 import Image from 'next/image'
 import graphic from '../assets/graphic.png'
 import profile5 from '../assets/profile5.png'
@@ -65,7 +66,9 @@ function Home() {
               <div className='flex flex-col gap-10 bg-[#FFFFFF] rounded-xl w-[367px] h-[468px] px-[30px] py-[30px] ml-5 mt-5'>
                 <div className='flex justify-between items-center pr-2'>
                   <div className='font-bold text-lg text-[#3A3D42]'>Transaction History</div>
-                  <div className='font-semibold text-sm text-primary'>See All</div>
+                  <div className='font-semibold text-sm text-primary hover:text-base'>
+                    <Link href='/history'>See All</Link>
+                  </div>
                 </div>
                 <div className='flex flex-col gap-10'>
                   <div className='flex'>
