@@ -43,10 +43,10 @@ function Login() {
               Forgot password?
             </div>
             <div className='mt-[90px]'>
-              <button type='submit' className='btn btn-secondary text-white btn-block'>Login</button>
+              <button type='submit' className='btn btn-secondary text-white btn-block normal-case'>Login</button>
             </div>
             <div className='flex justify-center mt-10'>
-              Don&apos;t have an account? <Link href='/auth/login' className='text-secondary'>Let&apos;s Sign Up</Link>
+              Don&apos;t have an account? <Link href='/auth/login' className='text-secondary normal-case'>Let&apos;s Sign Up</Link>
             </div>
         </form>
         </div>
