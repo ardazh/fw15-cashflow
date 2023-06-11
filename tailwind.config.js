@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         login: "url('../../public/bg-login.svg')",
+        index: "url('../../public/index-banner.svg')",
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',

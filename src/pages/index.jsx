@@ -15,15 +15,15 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
   return (
     <main>
-      <section className='px-[150px] py-[65px]'>
+      <section className='px-[150px] py-[65px] bg-index bg-right-top bg-no-repeat'>
         <div className='flex justify-between mb-[140px]'>
           <div className='text-primary font-bold text-[29px]'>CashFlow</div>
           <div className='flex gap-7'>
             <div>
-              <button className='btn btn-secondary font-bold normal-case border-white text-lg text-white'>Login</button>
+              <button className='btn btn-primary font-bold normal-case border-white text-lg text-white'>Login</button>
             </div>
             <div>
-              <button className='btn bg-white font-bold normal-case border-secondary hover:bg-secondary hover:text-white hover:border-white text-lg text-secondary'>Sign Up</button>
+              <button className='btn bg-white font-bold normal-case border-primary hover:bg-secondary hover:text-white hover:border-white text-lg text-secondary'>Sign Up</button>
             </div>
           </div>
         </div>
