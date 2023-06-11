@@ -1,29 +1,15 @@
 import React from 'react'
 import Link from 'next/link'
 
-import Image from 'next/image'
-import banner from '../../assets/banner.png'
+
 import {AiOutlineMail, AiOutlineLock} from 'react-icons/ai'
+import BannerAuth from '@/components/BannerAuth'
 
 function Login() {
   return (
     <div className='flex'>
         <div className='hidden md:flex flex-1 bg-[#E14D2A] w-1/2'>
-            <div className=''>
-              <div className='flex ml-40 text-white'>CashFlow</div>
-              <div className='flex justify-center items-center'>
-                  <Image className='w-[512px] h-[575px]' src={banner} alt='banner.png' />
-              </div>
-              <div className='flex flex-col justify-center mx-36 mb-16 gap-10 justify-center'>
-                <div className='text-2xl font-bold'>App that Covering Banking Needs.</div>
-                <div className='text-base'>
-                  CashFlow is an application that focussing in banking needs for all users
-                  in the world. Always updated and always following world trends.
-                  5000+ users registered in CashFlow everyday with worldwide
-                  users coverage.
-                </div>
-              </div>
-            </div>
+          <BannerAuth />
         </div>
         <div className='max-w-md w-full flex justify-center items-center'>
           <form className='w-[80%] flex flex-col justify-center'>
