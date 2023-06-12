@@ -23,20 +23,20 @@ function PersonaInfo() {
                 <div className='flex flex-col gap-5'>
                     <div className='w-[790px] h-[92px] p-[15px] border border-none rounded-xl shadow-lg'>
                         <div className='text-[#7A7886]'>First Name</div>
-                        <div className='text-[#514F5B] font-bold text-xl'>Jisoo</div>
+                        <div className='text-[#514F5B] font-bold text-lg'>Jisoo</div>
                     </div>
                     <div className='flex flex-col w-[790px] h-[92px] p-[15px] border border-none rounded-xl shadow-lg'>
                         <div className='text-[#7A7886]'>Last Name</div>
-                        <div className='text-[#514F5B] font-bold text-xl'>Kim</div>
+                        <div className='text-[#514F5B] font-bold text-lg'>Kim</div>
                     </div>
                     <div className='flex flex-col w-[790px] h-[92px] p-[15px] border border-none rounded-xl shadow-lg'>
                         <div className='text-[#7A7886]'>Verified E-mail</div>
-                        <div className='text-[#514F5B] font-bold text-xl'>jisoo@gmail.com</div>
+                        <div className='text-[#514F5B] font-bold text-lg'>jisoo@gmail.com</div>
                     </div>
                     <div className='flex justify-between items-center w-[790px] h-[92px] p-[15px] border border-none rounded-xl shadow-lg'>
                         <div className='flex flex-col'>
                             <div className='text-[#7A7886]'>Phone Number</div>
-                            <div className='text-[#514F5B] font-bold text-xl'>+62 813-9387-7946</div>
+                            <div className='text-[#514F5B] font-bold text-lg'>+62 813-9387-7946</div>
                         </div>
                         <Link href='/profile/change-number'>
                             <div className='font-medium text-primary hover:text-lg'>Manage</div>
