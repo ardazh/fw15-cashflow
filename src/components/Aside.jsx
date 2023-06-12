@@ -1,5 +1,6 @@
 import React from 'react'
 
+import Link from 'next/link'
 import {RxDashboard} from 'react-icons/rx'
 import {AiOutlineArrowUp, AiOutlinePlus, AiOutlineUser} from 'react-icons/ai'
 import {FiLogOut} from 'react-icons/fi'
@@ -18,7 +19,9 @@ function Aside() {
               <i>
                 <AiOutlineArrowUp size={28} /> 
               </i>
-              <div className=''>Transfer</div>
+              <div className=''>
+                <Link href='/transfer'>Transfer</Link>
+              </div>
             </div>
             <div className='flex items-center gap-[23px] px-[35px] h-9'>
               <i>
