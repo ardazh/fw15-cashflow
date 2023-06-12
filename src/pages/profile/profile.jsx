@@ -3,6 +3,7 @@ import Headers from '@/components/Header'
 import Footers from '@/components/Footers'
 import Aside from '@/components/Aside'
 
+import Link from 'next/link'
 import Image from 'next/image'
 import profile from '../../assets/profile1.jpg'
 import {LuEdit2, LuArrowRight} from 'react-icons/lu'
@@ -34,27 +35,36 @@ function Profile() {
                         <div className='text-[13px]'>+62 8139 3877 7946</div>
                     </div>
                     <div className='flex flex-col gap-5'>
-                        <div className='flex justify-between items-center bg-[#E5E8ED] w-[433px] h-[64px] border rounded-xl font-bold text-[#4D4B57] px-5 py-[18px] '>
-                            Personal Information
-                            <i>
-                                <LuArrowRight size={28}/>
-                            </i>
-                        </div>
-                        <div className='flex justify-between items-center bg-[#E5E8ED] w-[433px] h-[64px] border rounded-xl font-bold text-[#4D4B57] px-5 py-[18px] '>
-                            Change Password
-                            <i>
-                                <LuArrowRight size={28}/>
-                            </i>
-                        </div>
-                        <div className='flex justify-between items-center bg-[#E5E8ED] w-[433px] h-[64px] border rounded-xl font-bold text-[#4D4B57] px-5 py-[18px] '>
-                            Change PIN
-                            <i>
-                                <LuArrowRight size={28}/>
-                            </i>
-                        </div>
-                        <div className='flex justify-between items-center bg-[#E5E8ED] w-[433px] h-[64px] border rounded-xl font-bold text-[#4D4B57] px-5 py-[18px] '>
-                            Logout
-                        </div>
+                        <Link href='/profile/personal-info'>
+                            <button className='btn btn-info normal-case flex justify-between items-center bg-[#E5E8ED] w-[433px] h-[64px] border rounded-xl font-bold text-[#4D4B57] px-5 py-[18px] '>
+                                Personal Information
+                                <i>
+                                    <LuArrowRight size={28}/>
+                                </i>
+                            </button>
+                        </Link>
+                        <Link href='/profile/change-password'>
+                            <button className='btn btn-info normal-case flex justify-between items-center bg-[#E5E8ED] w-[433px] h-[64px] border rounded-xl font-bold text-[#4D4B57] px-5 py-[18px] '>
+                                Change Password
+                                <i>
+                                    <LuArrowRight size={28}/>
+                                </i>
+                            </button>
+                        </Link>
+                        <Link href='/profile/change-pin'>
+                            <button className='btn btn-info normal-case flex justify-between items-center bg-[#E5E8ED] w-[433px] h-[64px] border rounded-xl font-bold text-[#4D4B57] px-5 py-[18px] '>
+                                Change PIN
+                                <i>
+                                    <LuArrowRight size={28}/>
+                                </i>
+                            </button>
+                        </Link>
+                        <Link href='/logout'>
+                            <button className='btn btn-info normal-case flex justify-between items-center bg-[#E5E8ED] w-[433px] h-[64px] border rounded-xl font-bold text-[#4D4B57] px-5 py-[18px] '>
+                                Logout
+                            </button>
+                        </Link>
+                        
                     </div>
                 </div>
             </div>
