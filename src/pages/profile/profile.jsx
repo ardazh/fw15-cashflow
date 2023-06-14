@@ -7,6 +7,30 @@ import Link from 'next/link'
 import Image from 'next/image'
 import profile from '../../assets/profile1.jpg'
 import {LuEdit2, LuArrowRight} from 'react-icons/lu'
+import { withIronSessionSsr } from "iron-session/next";
+
+
+export const getServerSideProps = withIronSessionSsr(
+    async function getServerSideProps({ req, res }) {
+      const token = req.session.token;
+  
+      if (!token) {
+        res.setHeader('location', '/auth/login')
+        res.statusCode = 302
+        res.end()
+        return {
+            props: {}
+        };
+      }
+  
+      return {
+        props: {
+          token: req.session.token,
+        },
+      };
+    },
+    cookieConfig
+  );
 
 
 function Profile() {

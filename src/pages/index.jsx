@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
+import Link from 'next/link'
 
 import banner from '../assets/banner-2.png'
 import banner3 from '../assets/banner-3.png'
@@ -20,10 +21,14 @@ export default function Home() {
           <div className='text-primary font-bold text-[29px]'>CashFlow</div>
           <div className='flex gap-7'>
             <div>
-              <button className='btn btn-primary font-bold normal-case border-white text-lg text-white'>Login</button>
+              <Link href='/auth/login'>
+                <button className='btn btn-primary font-bold normal-case border-white text-lg text-white'>Login</button>
+              </Link>
             </div>
             <div>
-              <button className='btn bg-white font-bold normal-case border-primary hover:bg-secondary hover:text-white hover:border-white text-lg text-secondary'>Sign Up</button>
+              <Link href='/auth/register'>
+                <button className='btn bg-white font-bold normal-case border-primary hover:bg-secondary hover:text-white hover:border-white text-lg text-secondary'>Sign Up</button>
+              </Link>
             </div>
           </div>
         </div>
