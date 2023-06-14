@@ -1,5 +1,5 @@
 import React from 'react'
-import Headers from '@/components/Header'
+import Header from '@/components/Header'
 import Footers from '@/components/Footers'
 import Aside from '@/components/Aside'
 
@@ -8,12 +8,50 @@ import Image from 'next/image'
 import graphic from '../assets/graphic.png'
 import profile5 from '../assets/profile5.png'
 import {AiOutlineArrowUp, AiOutlineArrowDown, AiOutlinePlus} from 'react-icons/ai'
+import { withIronSessionSsr } from 'iron-session/next'
+import cookieConfig from '@/helpers/cookieConfig'
+import axios from 'axios'
+import Head from 'next/head'
 
-function Home() {
+export const getServerSideProps = withIronSessionSsr(
+  async function getServerSideProps({ req, res }) {
+    const token = req.session?.token
+
+    if (!token) {
+      res.setHeader('location', '/auth/login')
+      res.statusCode = 302
+      res.end()
+      return {
+        prop: {},
+      }
+    }
+    const { data } = await axios.get(
+      'https://cute-lime-goldfish-toga.cyclic.app/profile',
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+
+    return {
+      props: {
+        token,
+        user: data.results,
+      },
+    }
+  },
+  cookieConfig
+)
+
+function Home({token}) {
   return (
     <main className='bg-[#E5E5E5]'>
+        <Head>
+          <title>Home</title>
+        </Head>
         <div>
-            <Headers />
+            <Header token={token} />
         </div>
         <div className='flex'>
           <div>
