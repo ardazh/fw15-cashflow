@@ -8,6 +8,7 @@ import Image from 'next/image'
 import profile from '../../assets/profile1.jpg'
 import {LuEdit2, LuArrowRight} from 'react-icons/lu'
 import { withIronSessionSsr } from "iron-session/next";
+import cookieConfig from '@/helpers/cookieConfig'
 
 
 export const getServerSideProps = withIronSessionSsr(
@@ -30,7 +31,7 @@ export const getServerSideProps = withIronSessionSsr(
       };
     },
     cookieConfig
-  );
+  )
 
 
 function Profile() {
