@@ -10,25 +10,16 @@ import { LuEdit2, LuArrowRight } from "react-icons/lu";
 import { withIronSessionSsr } from "iron-session/next";
 import cookieConfig from "@/helpers/cookieConfig";
 import { useRouter } from "next/router";
-import axios from "axios";
 import { FiLogOut } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import { setProfile } from "@/redux/reducers/profile";
 import http from "@/helpers/http";
+import checkCredentials from "@/helpers/checkCredentials";
 
 export const getServerSideProps = withIronSessionSsr(
   async function getServerSideProps({ req, res }) {
     const token = req.session.token;
-
-    if (!token) {
-      res.setHeader("location", "/auth/login");
-      res.statusCode = 302;
-      res.end();
-      return {
-        props: {},
-      };
-    }
-
+    checkCredentials(token, res, "/auth/login");
     return {
       props: {
         token: req.session.token,

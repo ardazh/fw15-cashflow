@@ -14,38 +14,20 @@ import {
 } from "react-icons/ai";
 import { withIronSessionSsr } from "iron-session/next";
 import cookieConfig from "@/helpers/cookieConfig";
-import axios from "axios";
 import Head from "next/head";
 import { useDispatch, useSelector } from "react-redux";
 import TopUp from "@/components/TopUp";
 import { setTransactions } from "@/redux/reducers/transactions";
 import http from "@/helpers/http";
+import checkCredentials from "@/helpers/checkCredentials";
 
 export const getServerSideProps = withIronSessionSsr(
   async function getServerSideProps({ req, res }) {
     const token = req.session?.token;
-
-    if (!token) {
-      res.setHeader("location", "/auth/login");
-      res.statusCode = 302;
-      res.end();
-      return {
-        prop: {},
-      };
-    }
-    const { data } = await axios.get(
-      "https://kind-blue-cod-garb.cyclic.cloud/profile",
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-
+    checkCredentials(token, res, "/auth/login");
     return {
       props: {
         token,
-        user: data.results,
       },
     };
   },
