@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import Headers from "@/components/Header";
 import Footers from "@/components/Footers";
 import Aside from "@/components/Aside";
 
 import Link from "next/link";
 import Image from "next/image";
-import profile from "../../assets/profile1.jpg";
+import defaultPict from "../../assets/profile1.png";
 import { LuEdit2, LuArrowRight } from "react-icons/lu";
 import { withIronSessionSsr } from "iron-session/next";
 import cookieConfig from "@/helpers/cookieConfig";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { FiLogOut } from "react-icons/fi";
+import { useDispatch, useSelector } from "react-redux";
+import { setProfile } from "@/redux/reducers/profile";
+import http from "@/helpers/http";
 
 export const getServerSideProps = withIronSessionSsr(
   async function getServerSideProps({ req, res }) {
@@ -37,6 +40,48 @@ export const getServerSideProps = withIronSessionSsr(
 
 function Profile({ token }) {
   const router = useRouter();
+  const dispatch = useDispatch();
+  const profile = useSelector((state) => state.profile.data);
+  const [pictureURI, setPictureURI] = React.useState("");
+  const [selectedPicture, setSelectedPicture] = React.useState({});
+  const [loading, setLoading] = React.useState(false);
+
+  const fileToDataUrl = (file) => {
+    const reader = new FileReader();
+    reader.addEventListener("load", () => {
+      setPictureURI(reader.result);
+    });
+    reader.readAsDataURL(file);
+  };
+
+  const changePicture = (e) => {
+    const file = e.target.files[0];
+    setSelectedPicture(file);
+    fileToDataUrl(file);
+  };
+
+  const doChangePicture = async (values) => {
+    setLoading(true);
+    const form = new FormData();
+    Object.keys(values).forEach((key) => {
+      if (values[key]) {
+        form.append(key, values[key]);
+      }
+    });
+    if (selectedPicture) {
+      form.append("picture", selectedPicture);
+    }
+    if (token) {
+      const { data } = await http(token).patch("/profile", form, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      dispatch(setProfile(data.results));
+      setLoading(false);
+      setPictureURI("");
+    }
+  };
 
   const doLogout = async () => {
     await axios.get("/api/logout");
@@ -54,24 +99,78 @@ function Profile({ token }) {
         </div>
         <div className="flex flex-col gap-10 bg-[#FFFFFF] shadow-xl rounded-xl w-[850px] h-[678px] px-[30px] py-[30px] ml-5 mt-10">
           <div className="flex flex-col items-center">
-            <div className="border w-20 h-20 rounded-xl overflow-hidden object-cover mb-2.5">
-              <Image
-                className=""
-                src={profile}
-                alt="profile.jpg"
-                width={80}
-                height={80}
-              />
-            </div>
-            <div className="flex items-center gap-3 text-[#7A7886] mb-[15px]">
-              <i>
-                <LuEdit2 />
-              </i>
-              <div>Edit</div>
-            </div>
+            {pictureURI && (
+              <div className="border w-20 h-20 rounded-xl overflow-hidden object-cover mb-2.5">
+                <Image
+                  className=""
+                  src={pictureURI}
+                  alt="selected-picture"
+                  width={80}
+                  height={80}
+                />
+              </div>
+            )}
+            {!pictureURI && (
+              <div className="border w-20 h-20 rounded-xl overflow-hidden object-cover mb-2.5">
+                {profile?.picture ? (
+                  <Image
+                    className=""
+                    src={profile?.picture}
+                    alt="profile-user-img"
+                    width={80}
+                    height={80}
+                  />
+                ) : (
+                  <Image
+                    className=""
+                    src={defaultPict}
+                    alt="profile-user-default"
+                    width={80}
+                    height={80}
+                  />
+                )}
+              </div>
+            )}
+            <label className="flex items-center gap-3 text-[#7A7886] mb-[15px] hover:text-secondary">
+              {!pictureURI ? (
+                <>
+                  <i>
+                    <LuEdit2 />
+                  </i>
+                  <input
+                    type="file"
+                    className="hidden"
+                    onChange={changePicture}
+                  />
+                  Edit
+                </>
+              ) : null}
+            </label>
+            {pictureURI && (
+              <div className="flex items-start gap-2">
+                <button
+                  onClick={doChangePicture}
+                  className="font-[500] text-accent hover:text-secondary"
+                  type="button"
+                >
+                  Save
+                </button>
+                {loading && (
+                  <span className="loading loading-spinner loading-sm"></span>
+                )}
+              </div>
+            )}
             <div className="flex flex-col justify-center items-center text-[#3A3D42] gap-2.5 mb-[50px]">
-              <div className="text-lg font-bold">Kim Jisoo</div>
-              <div className="text-[13px]">+62 8139 3877 7946</div>
+              <div
+                className={`text-lg font-bold ${
+                  profile?.fullName ? "capitalize" : "lowercase"
+                }`}
+              >
+                {!profile?.fullName ? profile?.email : profile?.fullName}
+              </div>
+              <div className="text-[13px]">
+                {profile?.phones?.length >= 1 ? profile?.phones : "-"}
+              </div>
             </div>
             <div className="flex flex-col gap-5">
               <Link href="/profile/personal-info">
