@@ -1,6 +1,6 @@
 import React from "react";
-import Header from "@/components/Header";
-import Footers from "@/components/Footers";
+import Header from "@/components/header";
+import Footers from "@/components/footers";
 import Aside from "@/components/Aside";
 
 import Link from "next/link";
