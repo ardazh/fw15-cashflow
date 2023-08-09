@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Headers from "@/components/Header";
-import Footers from "@/components/Footers";
+import Headers from "@/components/header";
+import Footers from "@/components/footers";
 import Aside from "@/components/Aside";
 
 import Link from "next/link";
