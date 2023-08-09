@@ -92,7 +92,7 @@ function Dashboard({ token }) {
             <div className="flex flex-col gap-4">
               <div>
                 <Link
-                  href="/transfer"
+                  href="/transactions/transfer"
                   className="btn btn-secondary text-[#FFFFFF] normal-case font-bold text-lg"
                 >
                   <i>
