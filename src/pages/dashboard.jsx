@@ -190,69 +190,77 @@ function Dashboard({ token }) {
                       )}
 
                       {item.type === "TRANSFER" && (
-                        <div className="flex items-center justify-start gap-3">
-                          <div className="">
-                            {item.recipient.picture ? (
-                              <Image
-                                width={150}
-                                height={150}
-                                className="object-cover w-10 h-10 rounded-xl overflow-hidden"
-                                src={item.recipient.picture}
-                                alt="userImage"
-                              />
-                            ) : (
-                              <Image
-                                className="object-cover w-10 h-10 rounded-xl overflow-hidden"
-                                src={defaultPict}
-                                alt="user"
-                              />
-                            )}
-                          </div>
-                          <div className="">
-                            <div
-                              className={`text-neutral text-base font-semibold ${
-                                item?.recipient?.fullName ? "capitalize" : ""
-                              }`}
-                            >
-                              {item?.recipient?.fullName ||
-                                item?.recipient?.email}
+                        <>
+                          {item.recipient.id !== profile.id && (
+                            <div className="flex items-center justify-start gap-3">
+                              <div className="">
+                                {item.recipient.picture ? (
+                                  <Image
+                                    width={150}
+                                    height={150}
+                                    className="object-cover w-10 h-10 rounded-xl overflow-hidden"
+                                    src={item.recipient.picture}
+                                    alt="userImage"
+                                  />
+                                ) : (
+                                  <Image
+                                    className="object-cover w-10 h-10 rounded-xl overflow-hidden"
+                                    src={defaultPict}
+                                    alt="user"
+                                  />
+                                )}
+                              </div>
+                              <div className="">
+                                <div
+                                  className={`text-neutral text-base font-semibold ${
+                                    item?.recipient?.fullName
+                                      ? "capitalize"
+                                      : ""
+                                  }`}
+                                >
+                                  {item?.recipient?.fullName ||
+                                    item?.recipient?.email}
+                                </div>
+                                <div className="text-">Outcome</div>
+                              </div>
                             </div>
-                            <div className="text-">Outcome</div>
-                          </div>
-                        </div>
-                      )}
+                          )}
 
-                      {item.recipient.id === profile.id && (
-                        <div className="flex items-center justify-start gap-3">
-                          <div className="">
-                            {item.recipient.picture ? (
-                              <Image
-                                width={150}
-                                height={150}
-                                className="object-cover w-10 h-10 rounded-xl overflow-hidden"
-                                src={item.recipient.picture}
-                                alt="userImage"
-                              />
-                            ) : (
-                              <Image
-                                className="object-cover w-10 h-10 rounded-xl overflow-hidden"
-                                src={defaultPict}
-                                alt="user"
-                              />
-                            )}
-                          </div>
-                          <div className="">
-                            <div
-                              className={`text-neutral text-base font-semibold ${
-                                item?.recipient?.fullName ? "capitalize" : ""
-                              }`}
-                            >
-                              {item?.recipient?.fullName ||
-                                item?.recipient?.email}
+                          {item.recipient.id === profile.id && (
+                            <div className="flex items-center justify-start gap-3">
+                              <div className="">
+                                {item.recipient.picture ? (
+                                  <Image
+                                    width={150}
+                                    height={150}
+                                    className="object-cover w-10 h-10 rounded-xl overflow-hidden"
+                                    src={item.recipient.picture}
+                                    alt="userImage"
+                                  />
+                                ) : (
+                                  <Image
+                                    className="object-cover w-10 h-10 rounded-xl overflow-hidden"
+                                    src={defaultPict}
+                                    alt="user"
+                                  />
+                                )}
+                              </div>
+                              <div className="">
+                                <div
+                                  className={`text-neutral text-base font-semibold ${
+                                    item?.recipient?.fullName
+                                      ? "capitalize"
+                                      : ""
+                                  }`}
+                                >
+                                  {item?.recipient?.fullName ||
+                                    item?.recipient?.email}
+                                </div>
+                                <div className="text-">Income</div>
+                              </div>
                             </div>
-                            <div className="text-">Topup</div>
-                          </div>
-                        </div>
+                          )}
+                        </>
                       )}
 
                       {item?.type === "TOP-UP" && (
