@@ -43,7 +43,7 @@ function Aside(props) {
               <AiOutlineArrowUp size={28} />
             </i>
             <div className="">
-              <Link href="/transfer">Transfer</Link>
+              <Link href="/transactions/transfer">Transfer</Link>
             </div>
           </div>
           <div className="flex items-center gap-[23px] px-[35px] h-9">
