@@ -59,9 +59,9 @@ function Transfer({ token }) {
 
   React.useEffect(() => {
     if (recipientRedux) {
-      router.push("/user/transaction/amount");
+      router.push("/transactions/amount");
     }
-  }, [recipientRedux]);
+  }, [recipientRedux, router]);
 
   return (
     <main className="bg-[#E5E5E5]">
