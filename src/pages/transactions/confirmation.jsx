@@ -15,6 +15,7 @@ import http from "@/helpers/http";
 import moment from "moment";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { setTransactions } from "@/redux/reducers/transactions";
 
 export const getServerSideProps = withIronSessionSsr(
   async function getServerSideProps({ req, res }) {
@@ -39,6 +40,13 @@ function Confirmation({ token }) {
 
   const notifyWarnReq = (data) => toast.warn(data);
 
+  const transactionList = React.useCallback(async () => {
+    const { data } = await http(token).get("/transactions", {
+      params: { limit: 10 },
+    });
+    dispatch(setTransactions(data.results));
+  }, [token, dispatch]);
+
   React.useEffect(() => {
     if (!recipient) {
       router.replace("/transactions/transfer");
@@ -53,9 +61,9 @@ function Confirmation({ token }) {
         amount,
         pin,
       });
-      const { data } = await http(token).post("/transactions/transfer", form);
+      await http(token).post("/transactions/transfer", form);
       dispatch(clearTransferState());
-      console.log(data, "mane lu");
+      transactionList();
       if (data.results) {
         router.replace("/transactions/" + data.results.id);
       }
