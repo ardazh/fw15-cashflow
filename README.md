@@ -1,3 +1,4 @@
+
 # CashFlow
 
 is a web wallet application that can be used for transfers to friends, relatives or family.
@@ -28,13 +29,13 @@ is a web wallet application that can be used for transfers to friends, relatives
 ### 1. Clone the project
 
 ```bash
-  git clone https://github.com/arthuriski29/fw15-chiperpay-
+  git clone https://github.com/ardazh/fw15-cashflow
 ```
 
 ## 2. Go to the project directory
 
 ```bash
-  cd fw15-chiperpay-
+  cd fw15-cashflow
 ```
 
 ### 3. Run the development server:
